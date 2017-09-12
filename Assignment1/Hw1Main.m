@@ -33,7 +33,7 @@ m = length(y); % number of training examples
 
 % Write the fhe function Plot Data, which  plots y against X
 
-plotData(X, y);
+plotDataB(X, y);
 
 
 %% =================== Part 2: Gradient descent ===================
@@ -57,11 +57,11 @@ alpha = 0.01;
 
 % Compute and display initial cost
 % You MUST FILL IN THE NECESSARY CODE FOR THE FUNCTION computeCost
-computeCost(X, y, W)
+computeCostB(X, y, W)
 
 % Next we need to run the function gradientDescent, whose code YOU MUST
 % COMPLETE.  It returns the solution for W
-W = gradientDescent(X, y, W, alpha, iterations);
+W = gradientDescentB(X, y, W, alpha, iterations);
 
 % print W to screen
 fprintf('W found by gradient descent: ');
