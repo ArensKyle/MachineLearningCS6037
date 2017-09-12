@@ -17,10 +17,13 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of W
 %               You should set J to the cost.
 
-hX= ......% evaluate the hypothesis
-J = ......% evaluate the cost : the mean of the square errors 
-          % between the true output, y the output generate by the hypothesis
-          % divide it by 2 as well... 
+% evaluate the hypothesis
+for l=1:m, hX(l) = X(l,:)*W; end
+
+% evaluate the cost : the mean of the square errors 
+% between the true output, y the output generate by the hypothesis
+% divide it by 2 as well... 
+J = sum((hX - y').^2)/2;
 
 
 
