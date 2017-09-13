@@ -23,7 +23,7 @@ for l=1:m, hX(l) = X(l,:)*W; end
 % evaluate the cost : the mean of the square errors 
 % between the true output, y the output generate by the hypothesis
 % divide it by 2 as well... 
-J = sum((hX - y').^2)/2;
+J = sum((hX - y').^2)/(2*m);
 
 
 
