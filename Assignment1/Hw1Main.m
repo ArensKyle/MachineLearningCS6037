@@ -107,7 +107,7 @@ J_vals = zeros(length(W0_vals), length(W1_vals));
 for i = 1:length(W0_vals)
     for j = 1:length(W1_vals)
 	  t = [W0_vals(i); W1_vals(j)];    
-	  J_vals(i,j) = computeCost(X, y, t);
+	  J_vals(i,j) = computeCostB(X, y, t);
     end
 end
 
