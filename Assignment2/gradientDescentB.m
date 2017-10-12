@@ -14,8 +14,8 @@ for iter = 1:num_iters
 % ====================== YOUR CODE HERE ======================
 % Perform a single gradient step on the parameter vector W
 
-error = X * W - y  % (m x 1 vector)
-pause
+error = X * W - y;  % (m x 1 vector)
+%pause
 % X is m x n matrix, so to multiply by errors we need to transpose it
 % that is, X'*error
 % then scale / multiply by alpha and (1/m)
