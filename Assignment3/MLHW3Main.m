@@ -22,7 +22,7 @@
 %   6) node             /a class used to build nodes for the tree
 %   7) NBC              /a class that implements Naive Bayes Classifier
 %#####################################################################
-
+clear;
 %instantiate a new instance of the DataManager class
 DM1 = DataManager();
 %load the data
