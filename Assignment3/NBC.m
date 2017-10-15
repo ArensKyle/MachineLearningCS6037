@@ -1,5 +1,5 @@
 classdef NBC<handle
-    %NBC (Naïve Bayes classifier)
+    %NBC (NaÃ¯ve Bayes classifier)
     %   Detailed explanation goes here
     
     properties(Access = public)
@@ -52,32 +52,32 @@ classdef NBC<handle
             %----------------------------------------------------------
             %  #fill_in: seperate samples from Data into two groups using logical indices
             %first group : samples with a label equal to obj.species
-            RowsSpecies = 
+            RowsSpecies = Data(find(Data(:,1)==obj.species),:);
             
             %second group : other samples
-            RowsNotSpecies = 
+            RowsNotSpecies = Data(find(Data(:,1)~=obj.species),:);
             
             %#fill_in: count the number of all samples
-            NumOfAllSamples =
+            NumOfAllSamples = length(RowsSpecies) + length(RowsNotSpecies);
             
             %#fill_in: count the number of samples that have a label = obj.species (number of raws in "RowsSpecies")
-            NumSpecies = 
+            NumSpecies = length(RowsSpecies);
             
             %#fill_in: count the number of samples that have a label other than obj.species (number of raws in "RowsNotSpecies")
-            NumNotSpecies = 
+            NumNotSpecies = length(RowsNotSpecies);
             %----------------------------------------------------------
             
             %----------------------------------------------------------
             %#fill_in: calculate the probability that a randomly
             %selected sample will have a label = to obj.species
             %(by using the values you got above)
-            obj.Probability_species = 
+            obj.Probability_species = NumSpecies/NumOfAllSamples;
             
             %#fill_in: calculate the probability that a randomly
             %selected sample will have any label other than a label =
             %obj.species
             %(by using the values you got above)
-            obj.Probability_Not_species =
+            obj.Probability_Not_species = NumNotSpecies/NumOfAllSamples;
             %----------------------------------------------------------
             
             
@@ -109,7 +109,7 @@ classdef NBC<handle
                 %
                 %to use the function pass the columns 1 to 4 as first
                 %parameter and the value true as second parameter
-                NB_Species_positive = 
+                NB_Species_positive = obj.Probability_species * obj.MultipliedLikelyHoods(Data(i,1:4),true);
                 %----------------------------------------------------------
                 
                 %----------------------------------------------------------
@@ -119,7 +119,7 @@ classdef NBC<handle
                 %
                 %to use the function pass the columns 1 to 4 as first
                 %parameter and the value false as second parameter
-                NB_Species_Negative = 
+                NB_Species_Negative = 1 - NB_Species_positive;
                 %----------------------------------------------------------
                 
                 %classify based on which probability is higher
