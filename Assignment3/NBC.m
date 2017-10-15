@@ -109,7 +109,9 @@ classdef NBC<handle
                 %
                 %to use the function pass the columns 1 to 4 as first
                 %parameter and the value true as second parameter
-                NB_Species_positive = obj.Probability_species * obj.MultipliedLikelyHoods(Data(i,1:4),true);
+                a = obj.Probability_species;
+                b = obj.MultipliedLikelyHoods(Data(i,1:4),true);
+                NB_Species_positive = obj.Probability_species + obj.MultipliedLikelyHoods(Data(i,1:4),true);
                 %----------------------------------------------------------
                 
                 %----------------------------------------------------------
