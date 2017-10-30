@@ -1,0 +1,19 @@
+Samuel Toth  
+Kyle Arens  
+Evan Akers  
+
+Understanding The Denotational Semantics and Functionalities of Basic Programs
+
+Our project goal is to understand the underlying denotational semantics behind programs within the programming language C++. Using machine
+learning methods, we will seek to determine the functions of basic programs. This will involve us gathering various rudimentary C++
+programs (e.g. basic sorting algorithms, gcd, etc), along with current literature on denotational semantics and it's use in generalizing
+the function of a program. With the C++ programs, our most likely approach will be to break them down into assembly code, and use the 
+resulting machine statements as our binary operators. Ideally, current literature will help us to understand the use of denotational 
+semantics in the broader sense of program functionality. From this understanding, we can futher apply our machine learning algortihms to 
+generalize the functionailty of a testing set of programs. Since we'll have the source code for each program, and thus a complete 
+understanding of the actual functionality, we can use this as a standard for testing. One problem that we will face lies in the definition 
+of functionality of a program. Our initial approach will be to use these binary operators in order to cluster the algorithms based on some 
+distance metric, which will hopefully give us a more generalizable definition of functionality. Therefore, our goals in the project are as 
+followed: Dertermine a computational definition of "program functionality", break source code into functional group, and apply machine 
+learning techniques from the course in helping to determine the different functionalities within a test set of source code.
+  
