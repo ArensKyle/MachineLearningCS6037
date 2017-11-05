@@ -8,3 +8,6 @@
 %Evan Akers
 
 load fisheriris;
+
+alpha = zeros(1,meas);
+error = zeros(1,meas);
