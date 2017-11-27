@@ -10,7 +10,14 @@ learningRates = [0.001, 0.01, 0.05, 0.1, 0.2];
 iterations = 5;
 X = randn(100, 2);
 Y = zeros(100, 1);
-initialCoeff = 0.01 * randn(m+1,1);
+
+for j = 1:100
+    if ((X(j,1) + 2*X(j,2) - 2) > 0)
+        Y(j) = 1;
+    else
+        Y(j) = -1;
+    end
+end
 
 resultsVec = zeros(5,2);
 
