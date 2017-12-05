@@ -57,10 +57,11 @@ while e >= error &&  iterations <= epochs
     % P2 a
     %eta = decay_rate^iterations * lr;
 
-
-end
-for j = 1:rd
+    for j = 1:rd
     deltaw = eta.*(Target(j)-out(j))*[Data(j,:),1];
     w = w + deltaw;
+    end
+
 end
+
 end
