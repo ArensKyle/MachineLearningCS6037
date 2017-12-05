@@ -1,4 +1,4 @@
-%clear;
+clear;
 close all;
 %Evan Akers
 %Kyle Arens
@@ -50,23 +50,53 @@ for j = 1:length(Xnew)
     end
 end
 
+%calculate how many were correct classifications
 correct = sum(YnewGuess.*YnewTarget>0);
 
+%Plot error as function of iterations
 figure;
 plot(iterations,errorVec, 'r*-')
 xlabel('Iteration');
 ylabel('Error');
 title('Error over Iterations');
 
-figure;
-plot2dimdata(Xnew, YnewGuess(:, 1), 'r', 'b', resultsVec(1,:))
+
+%5 iterations
+posIndex1=find(YnewGuess(:,1)==1);
+negIndex1=find(YnewGuess(:,1)==-1);
 
 figure;
-plot2dimdata(Xnew, YnewGuess(:, 2), 'r', 'b', resultsVec(2,:))
+x = linspace(min(Xnew(:,1)), max(Xnew(:,1)));
+y = -1.*(resultsVec(1,1)/resultsVec(1,2))*x - (resultsVec(1,3)/resultsVec(1,2));
+plot(Xnew(posIndex1,1), Xnew(posIndex1,2), 'bo', Xnew(negIndex1,1), Xnew(negIndex1,2), 'ro', x, y, 'g-');
+
+
+%10 iterations
+posIndex1=find(YnewGuess(:,2)==1);
+negIndex1=find(YnewGuess(:,2)==-1);
 
 figure;
-plot2dimdata(Xnew, YnewGuess(:, 3), 'r', 'b', resultsVec(3,:))
+x = linspace(min(Xnew(:,1)), max(Xnew(:,1)));
+y = -1.*(resultsVec(2,1)/resultsVec(2,2))*x - (resultsVec(2,3)/resultsVec(2,2));
+plot(Xnew(posIndex1,1), Xnew(posIndex1,2), 'bo', Xnew(negIndex1,1), Xnew(negIndex1,2), 'ro', x, y, 'g-');
+
+
+%50 iterations
+posIndex1=find(YnewGuess(:,3)==1);
+negIndex1=find(YnewGuess(:,3)==-1);
 
 figure;
-plot2dimdata(Xnew, YnewGuess(:, 4), 'r', 'b', resultsVec(4,:))
+x = linspace(min(Xnew(:,1)), max(Xnew(:,1)));
+y = -1.*(resultsVec(3,1)/resultsVec(3,2))*x - (resultsVec(3,3)/resultsVec(3,2));
+plot(Xnew(posIndex1,1), Xnew(posIndex1,2), 'bo', Xnew(negIndex1,1), Xnew(negIndex1,2), 'ro', x, y, 'g-');
+
+
+%100 iterations
+posIndex4=find(YnewGuess(:,4)==1);
+negIndex4=find(YnewGuess(:,4)==-1);
+
+figure;
+x = linspace(min(Xnew(:,1)), max(Xnew(:,1)));
+y = -1.*(resultsVec(4,1)/resultsVec(4,2))*x - (resultsVec(4,3)/resultsVec(4,2));
+plot(Xnew(posIndex1,1), Xnew(posIndex1,2), 'bo', Xnew(negIndex1,1), Xnew(negIndex1,2), 'ro', x, y, 'g-');
 

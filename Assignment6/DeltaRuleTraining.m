@@ -1,4 +1,4 @@
-function [w, iterations, e]=DeltaRuleTraining(Data, Target, eta, error, epochs)
+function [w, iterations, e, eta]=DeltaRuleTraining(Data, Target, eta, error, epochs)
 %% Invoke as: [w, iterations, e] = DeltaRuleTraining(Data, Target, eta, error, epochs)
 %% implements the delta  rule;
 %% Input:
@@ -14,6 +14,14 @@ function [w, iterations, e]=DeltaRuleTraining(Data, Target, eta, error, epochs)
 %%  iterations = MIN{is the number of iterations taken to reach error threshold e, epochs}
 %%  e: error threshold
 
+% To implement 2 a and b, comment and uncomment the corresponding code
+% labeled in the comments below
+
+lr=eta;
+decay_rate=0.8;
+d=.9;
+D=1.02;
+
 [rd, cd]=size(Data);
 [rt, ct]=size(Target);
 if rt ~= rt
@@ -22,8 +30,18 @@ else
  w=rand(1,cd+1);
  iterations=0;
 e=error;
-while e >= error &&  iterations <= epochs
- iterations=iterations+1;
+pe=e;
+
+while e >= error &&  iterations <= epochs 
+    
+ %P2 b
+ if e > (pe + error)
+     eta = eta*D;
+ else
+     iterations=iterations+1;
+    eta = eta*d;
+ end
+ 
  wrong=0;
  for i=1:rd,
      out(i) = sum(w .* [Data(i,:),1]);  % delta rule 
@@ -46,6 +64,12 @@ while e >= error &&  iterations <= epochs
 % e=wrong/rd;
 
 % error for delta rule
+pe = e;
 e=sum(err)/rd;
+
+% P2 a
+%eta = decay_rate^iterations * lr;
+
+
 end
 end
