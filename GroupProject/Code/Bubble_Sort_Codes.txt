@@ -1,16 +1,3 @@
-('subl', 6)
-('xorl', 2)
-('je', 1)
-('movl', 41)
-('call', 3)
-('pushl', 9)
-('jle', 1)
-('cmpl', 3)
-('jmp', 2)
-('andl', 1)
-('jg', 2)
-('addl', 10)
-('leal', 7)
 jmp, 2
 movl, 41
 pushl, 9
