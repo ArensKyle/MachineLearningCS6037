@@ -1,4 +1,4 @@
-import os, glob, shutil, re
+import os, glob, shutil, re, sys
 
 def readAssem(relativePath):
     actionMap = dict()
@@ -15,13 +15,13 @@ def readAssem(relativePath):
                 actionMap.update({action.strip() : 1})
     
     results = actionMap.items()
-    for item in results:
-        print(item)
+    for item in results:    
+        print(str(item[0]) + ", " + str(item[1])) 
     
 
-def main():
-    readAssem("/Assembly/Bubble_Sort.s")
+def main(filepath):
+    readAssem(filepath)
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1])
