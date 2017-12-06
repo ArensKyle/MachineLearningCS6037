@@ -1,4 +1,4 @@
-import os, glob, shutil, re
+import os, glob, shutil, re, sys
 
 def readAssem(relativePath):
     actionMap = dict()
@@ -24,4 +24,4 @@ def main(filepath):
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1])
