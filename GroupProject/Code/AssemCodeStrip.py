@@ -19,8 +19,8 @@ def readAssem(relativePath):
         print(item)
     
 
-def main():
-    readAssem("/Assembly/Bubble_Sort.s")
+def main(filepath):
+    readAssem(filepath)
 
 
 if __name__ == '__main__':
