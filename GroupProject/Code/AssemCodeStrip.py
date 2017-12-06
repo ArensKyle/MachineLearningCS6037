@@ -15,8 +15,8 @@ def readAssem(relativePath):
                 actionMap.update({action.strip() : 1})
     
     results = actionMap.items()
-    for item in results:
-        print(item)
+    for item in results:    
+        print(str(item[0]) + ", " + str(item[1])) 
     
 
 def main(filepath):
