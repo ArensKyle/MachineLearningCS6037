@@ -11,3 +11,16 @@
 ('jg', 2)
 ('addl', 10)
 ('leal', 7)
+jmp, 2
+movl, 41
+pushl, 9
+jg, 2
+je, 1
+jle, 1
+xorl, 2
+cmpl, 3
+andl, 1
+subl, 6
+call, 3
+addl, 10
+leal, 7
