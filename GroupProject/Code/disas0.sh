@@ -10,4 +10,6 @@ for filename in Sample_Programs/*; do
 
   #objdump -d -j .text a.out  > Assembly/"$ActFile"-disas.txt
   #rm "$ActFile".S
+
+  python3 AssemCodeStrip.py /Assembly/"$ActFile".s > Assembly_CSV/"$ActFile".csv
 done
