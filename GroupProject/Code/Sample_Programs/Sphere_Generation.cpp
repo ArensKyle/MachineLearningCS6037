@@ -1,22 +1,21 @@
 #include <cmath>
- 
+
 // this header file contains get<0> and get<1> function
 #include <utility>
- 
 #include <list>
 #include <map>
 using namespace std;
- 
+
 // map to store the voxels
 map<int, list<pair<int, int> > > mymap;
 map<int, list<pair<int, int> > >::iterator itr;
- 
+
 // this function will store single voxel
 void putpixelone(int m, int n, int p)
 {
     mymap[m].push_back(make_pair(n, p));
 }
- 
+
 // function to store some particular type of voxel
 void putpixelmiddle(int a, int b, int c, int x, int y, int z)
 {
@@ -27,7 +26,7 @@ void putpixelmiddle(int a, int b, int c, int x, int y, int z)
     putpixelone(c + x, a + y, b + z);
     putpixelone(-c + x, a + y, b + z);
 }
- 
+
 // This program will generate 24 voxels
 void putpixeldouble(int a, int b, int c, int x, int y, int z)
 {
@@ -72,7 +71,7 @@ void putpixeldouble(int a, int b, int c, int x, int y, int z)
         swap(a, b);
     }
 }
- 
+
 // Explained above
 void putpixelsingle(int a, int b, int c, int x,
                     int y, int z)
@@ -90,7 +89,7 @@ void putpixelsingle(int a, int b, int c, int x,
 void putpixeledge2(int a, int b, int c, int x,
                    int y, int z)
 {
- 
+
     for (int j = 0; j < 3; j++) {
         putpixelone(a + x, b + y, c + z);
         swap(a, b);
@@ -162,7 +161,7 @@ void putpixeledge1(int a, int b, int c, int x, int y, int z)
     putpixelone(c + x, b + y, -a + z);
     putpixelone(c + x, -b + y, -a + z);
 }
- 
+
 // voxel formation by 48 symmetry.
 void putpixelall(int a, int b, int c, int x,
                  int y, int z)
@@ -216,7 +215,7 @@ void putpixelall(int a, int b, int c, int x,
     putpixelone(-c + x, -a + y, -b + z);
     putpixelone(-b + x, -c + y, -a + z);
 }
- 
+
 // detailed explanation of this algorithm is
 // given in above link.
 void drawsphere(int x, int y, int z, int r)
@@ -230,10 +229,10 @@ void drawsphere(int x, int y, int z, int r)
     int v = v0;
     int l0 = 2 * v0;
     int l = l0;
- 
+
     // this while loop will form naive arcs
     while (i <= k) {
- 
+
         // this while will form voxels in naive arcs
         while (j <= k) {
             if (s > v) {
@@ -242,31 +241,31 @@ void drawsphere(int x, int y, int z, int r)
                 l = l - 2;
             }
             if ((j <= k) && ((s != v) || (j != k))) {
- 
+
                 // this if, else and else if condition
                 // can easily build using figure 2, 3
                 if (i == 0 && j != 0)
- 
+
                     // First naive arc pixels and each
                     // pixel is shared with two q-octants
                     putpixeledge1(i, j, k, x, y, z);
- 
+
                 // voxels shared between q1 and q2
                 else if (i == j && j != k && i != 0)
                     putpixeledge2(i, j, k, x, y, z);
- 
+
                 // center voxel of c-octants
                 else if (i == j && j == k)
                     putpixelsingle(i, j, k, x, y, z);
- 
+
                 // voxels shared between q1 and q6
                 else if (j == k && i < k && i < j)
                     putpixeldouble(i, j, k, x, y, z);
- 
+
                 // starting voxel of q-octant
                 else if (i == 0 && j == 0)
                     putpixelmiddle(i, j, k, x, y, z);
- 
+
                 // voxels inside the q-octant
                 else
                     putpixelall(i, j, k, x, y, z);
@@ -276,7 +275,7 @@ void drawsphere(int x, int y, int z, int r)
         }
         s0 = s0 + 4 * i + 2;
         i = i + 1;
- 
+
         while ((s0 > v0) && (i <= k0)) {
             k0 = k0 - 1;
             v0 = v0 + l0;
@@ -294,9 +293,9 @@ void drawsphere(int x, int y, int z, int r)
 // Driver program
 int main()
 {
-    int cx, cy, cz;
-    cin >> cx >> cy >> cz;
-    int r;
-    cin >> r;
+    int cx = 10;
+    int cy = 11;
+    int cz = 12;
+    int r = 22;
     drawsphere(cx, cy, cz, r);
 }

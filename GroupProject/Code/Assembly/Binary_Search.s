@@ -104,5 +104,5 @@ main:
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

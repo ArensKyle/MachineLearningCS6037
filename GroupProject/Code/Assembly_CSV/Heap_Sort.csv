@@ -10,7 +10,7 @@ je, 2
 call, 7
 shrl, 1
 sarl, 1
+js, 2
 jmp, 2
-jns, 2
 andl, 1
 xorl, 2

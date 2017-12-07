@@ -7,9 +7,7 @@ _Z22insertionSortRecursivePii:
 	movl	%esp, %ebp
 	subl	$24, %esp
 	cmpl	$1, 12(%ebp)
-	jg	.L2
-	jmp	.L1
-.L2:
+	jle	.L6
 	movl	12(%ebp), %eax
 	subl	$1, %eax
 	subl	$8, %esp
@@ -27,8 +25,16 @@ _Z22insertionSortRecursivePii:
 	movl	12(%ebp), %eax
 	subl	$2, %eax
 	movl	%eax, -16(%ebp)
-	jmp	.L4
-.L6:
+.L5:
+	cmpl	$0, -16(%ebp)
+	js	.L4
+	movl	-16(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	cmpl	-12(%ebp), %eax
+	jle	.L4
 	movl	-16(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -41,17 +47,8 @@ _Z22insertionSortRecursivePii:
 	movl	(%eax), %eax
 	movl	%eax, (%edx)
 	subl	$1, -16(%ebp)
+	jmp	.L5
 .L4:
-	cmpl	$0, -16(%ebp)
-	js	.L5
-	movl	-16(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	8(%ebp), %eax
-	addl	%edx, %eax
-	movl	(%eax), %eax
-	cmpl	-12(%ebp), %eax
-	jg	.L6
-.L5:
 	movl	-16(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -59,6 +56,9 @@ _Z22insertionSortRecursivePii:
 	addl	%eax, %edx
 	movl	-12(%ebp), %eax
 	movl	%eax, (%edx)
+	jmp	.L1
+.L6:
+	nop
 .L1:
 	leave
 	ret
@@ -102,5 +102,5 @@ main:
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

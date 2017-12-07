@@ -7,8 +7,10 @@ _Z4flipPii:
 	movl	%esp, %ebp
 	subl	$16, %esp
 	movl	$0, -8(%ebp)
-	jmp	.L2
 .L3:
+	movl	-8(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L4
 	movl	-8(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -33,10 +35,9 @@ _Z4flipPii:
 	movl	%eax, (%edx)
 	addl	$1, -8(%ebp)
 	subl	$1, 12(%ebp)
-.L2:
-	movl	-8(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L3
+	jmp	.L3
+.L4:
+	nop
 	leave
 	ret
 	.size	_Z4flipPii, .-_Z4flipPii
@@ -48,8 +49,10 @@ _Z7findMaxPii:
 	subl	$16, %esp
 	movl	$0, -8(%ebp)
 	movl	$0, -4(%ebp)
-	jmp	.L5
-.L7:
+.L8:
+	movl	-4(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L6
 	movl	-4(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -61,15 +64,13 @@ _Z7findMaxPii:
 	addl	%ecx, %eax
 	movl	(%eax), %eax
 	cmpl	%eax, %edx
-	jle	.L6
+	jle	.L7
 	movl	-4(%ebp), %eax
 	movl	%eax, -8(%ebp)
-.L6:
+.L7:
 	addl	$1, -4(%ebp)
-.L5:
-	movl	-4(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L7
+	jmp	.L8
+.L6:
 	movl	-8(%ebp), %eax
 	leave
 	ret
@@ -82,8 +83,9 @@ _Z11pancakeSortPii:
 	subl	$16, %esp
 	movl	12(%ebp), %eax
 	movl	%eax, -8(%ebp)
-	jmp	.L10
-.L12:
+.L13:
+	cmpl	$1, -8(%ebp)
+	jle	.L14
 	pushl	-8(%ebp)
 	pushl	8(%ebp)
 	call	_Z7findMaxPii
@@ -92,7 +94,7 @@ _Z11pancakeSortPii:
 	movl	-8(%ebp), %eax
 	subl	$1, %eax
 	cmpl	-4(%ebp), %eax
-	je	.L11
+	je	.L12
 	pushl	-4(%ebp)
 	pushl	8(%ebp)
 	call	_Z4flipPii
@@ -103,11 +105,11 @@ _Z11pancakeSortPii:
 	pushl	8(%ebp)
 	call	_Z4flipPii
 	addl	$8, %esp
-.L11:
+.L12:
 	subl	$1, -8(%ebp)
-.L10:
-	cmpl	$1, -8(%ebp)
-	jg	.L12
+	jmp	.L13
+.L14:
+	nop
 	leave
 	ret
 	.size	_Z11pancakeSortPii, .-_Z11pancakeSortPii
@@ -141,13 +143,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L15
+	je	.L17
 	call	__stack_chk_fail
-.L15:
+.L17:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

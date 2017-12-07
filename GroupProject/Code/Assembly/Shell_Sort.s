@@ -12,12 +12,15 @@ _Z9shellSortPii:
 	addl	%edx, %eax
 	sarl	%eax
 	movl	%eax, -16(%ebp)
-	jmp	.L2
-.L8:
+.L7:
+	cmpl	$0, -16(%ebp)
+	jle	.L2
 	movl	-16(%ebp), %eax
 	movl	%eax, -12(%ebp)
-	jmp	.L3
-.L7:
+.L6:
+	movl	-12(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L3
 	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -26,8 +29,18 @@ _Z9shellSortPii:
 	movl	%eax, -4(%ebp)
 	movl	-12(%ebp), %eax
 	movl	%eax, -8(%ebp)
-	jmp	.L4
-.L6:
+.L5:
+	movl	-8(%ebp), %eax
+	cmpl	-16(%ebp), %eax
+	jl	.L4
+	movl	-8(%ebp), %eax
+	subl	-16(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	cmpl	-4(%ebp), %eax
+	jle	.L4
 	movl	-8(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -41,19 +54,8 @@ _Z9shellSortPii:
 	movl	%eax, (%edx)
 	movl	-16(%ebp), %eax
 	subl	%eax, -8(%ebp)
+	jmp	.L5
 .L4:
-	movl	-8(%ebp), %eax
-	cmpl	-16(%ebp), %eax
-	jl	.L5
-	movl	-8(%ebp), %eax
-	subl	-16(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	8(%ebp), %eax
-	addl	%edx, %eax
-	movl	(%eax), %eax
-	cmpl	-4(%ebp), %eax
-	jg	.L6
-.L5:
 	movl	-8(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -61,19 +63,16 @@ _Z9shellSortPii:
 	movl	-4(%ebp), %eax
 	movl	%eax, (%edx)
 	addl	$1, -12(%ebp)
+	jmp	.L6
 .L3:
-	movl	-12(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L7
 	movl	-16(%ebp), %eax
 	movl	%eax, %edx
 	shrl	$31, %edx
 	addl	%edx, %eax
 	sarl	%eax
 	movl	%eax, -16(%ebp)
+	jmp	.L7
 .L2:
-	cmpl	$0, -16(%ebp)
-	jg	.L8
 	movl	$0, %eax
 	leave
 	ret
@@ -108,13 +107,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L12
+	je	.L11
 	call	__stack_chk_fail
-.L12:
+.L11:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

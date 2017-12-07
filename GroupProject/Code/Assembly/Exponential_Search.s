@@ -30,21 +30,20 @@ _Z17exponentialSearchPiii:
 	jmp	.L6
 .L5:
 	movl	$1, -12(%ebp)
-	jmp	.L7
-.L9:
-	sall	-12(%ebp)
-.L7:
+.L8:
 	movl	-12(%ebp), %eax
 	cmpl	12(%ebp), %eax
-	jge	.L8
+	jge	.L7
 	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	16(%ebp), %eax
-	jle	.L9
-.L8:
+	jg	.L7
+	sall	-12(%ebp)
+	jmp	.L8
+.L7:
 	pushl	12(%ebp)
 	pushl	-12(%ebp)
 	call	_Z3minii
@@ -73,7 +72,7 @@ _Z12binarySearchPiiii:
 	subl	$24, %esp
 	movl	16(%ebp), %eax
 	cmpl	12(%ebp), %eax
-	jl	.L11
+	jl	.L10
 	movl	16(%ebp), %eax
 	subl	12(%ebp), %eax
 	movl	%eax, %edx
@@ -90,17 +89,17 @@ _Z12binarySearchPiiii:
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	20(%ebp), %eax
-	jne	.L12
+	jne	.L11
 	movl	-12(%ebp), %eax
-	jmp	.L13
-.L12:
+	jmp	.L12
+.L11:
 	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	20(%ebp), %eax
-	jle	.L14
+	jle	.L13
 	movl	-12(%ebp), %eax
 	subl	$1, %eax
 	pushl	20(%ebp)
@@ -109,8 +108,8 @@ _Z12binarySearchPiiii:
 	pushl	8(%ebp)
 	call	_Z12binarySearchPiiii
 	addl	$16, %esp
-	jmp	.L13
-.L14:
+	jmp	.L12
+.L13:
 	movl	-12(%ebp), %eax
 	addl	$1, %eax
 	pushl	20(%ebp)
@@ -119,10 +118,10 @@ _Z12binarySearchPiiii:
 	pushl	8(%ebp)
 	call	_Z12binarySearchPiiii
 	addl	$16, %esp
-	jmp	.L13
-.L11:
+	jmp	.L12
+.L10:
 	movl	$-1, %eax
-.L13:
+.L12:
 	leave
 	ret
 	.size	_Z12binarySearchPiiii, .-_Z12binarySearchPiiii
@@ -159,13 +158,13 @@ main:
 	movl	-44(%ebp), %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L17
+	je	.L16
 	call	__stack_chk_fail
-.L17:
+.L16:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

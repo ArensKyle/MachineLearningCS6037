@@ -16,6 +16,7 @@ _Z4swapPiS_:
 	movl	12(%ebp), %eax
 	movl	-4(%ebp), %edx
 	movl	%edx, (%eax)
+	nop
 	leave
 	ret
 	.size	_Z4swapPiS_, .-_Z4swapPiS_
@@ -36,8 +37,11 @@ _Z9partitionPiii:
 	movl	%eax, -12(%ebp)
 	movl	12(%ebp), %eax
 	movl	%eax, -8(%ebp)
-	jmp	.L3
 .L5:
+	movl	16(%ebp), %eax
+	subl	$1, %eax
+	cmpl	-8(%ebp), %eax
+	jl	.L3
 	movl	-8(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -60,11 +64,8 @@ _Z9partitionPiii:
 	addl	$8, %esp
 .L4:
 	addl	$1, -8(%ebp)
+	jmp	.L5
 .L3:
-	movl	16(%ebp), %eax
-	subl	$1, %eax
-	cmpl	-8(%ebp), %eax
-	jge	.L5
 	movl	16(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -127,8 +128,9 @@ _Z18quickSortIterativePiii:
 	movl	-28(%ebp), %edx
 	movl	16(%ebp), %ecx
 	movl	%ecx, (%eax,%edx,4)
-	jmp	.L8
-.L10:
+.L11:
+	cmpl	$0, -28(%ebp)
+	js	.L8
 	movl	-28(%ebp), %eax
 	leal	-1(%eax), %edx
 	movl	%edx, -28(%ebp)
@@ -167,7 +169,7 @@ _Z18quickSortIterativePiii:
 	movl	-16(%ebp), %eax
 	addl	$1, %eax
 	cmpl	16(%ebp), %eax
-	jge	.L8
+	jge	.L11
 	addl	$1, -28(%ebp)
 	movl	-16(%ebp), %eax
 	leal	1(%eax), %ecx
@@ -179,15 +181,15 @@ _Z18quickSortIterativePiii:
 	movl	-28(%ebp), %edx
 	movl	16(%ebp), %ecx
 	movl	%ecx, (%eax,%edx,4)
+	jmp	.L11
 .L8:
-	cmpl	$0, -28(%ebp)
-	jns	.L10
 	movl	%ebx, %esp
+	nop
 	movl	-12(%ebp), %eax
 	xorl	%gs:20, %eax
-	je	.L11
+	je	.L12
 	call	__stack_chk_fail
-.L11:
+.L12:
 	movl	-4(%ebp), %ebx
 	leave
 	ret
@@ -226,13 +228,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L14
+	je	.L15
 	call	__stack_chk_fail
-.L14:
+.L15:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

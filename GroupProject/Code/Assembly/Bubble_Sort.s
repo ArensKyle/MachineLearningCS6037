@@ -16,6 +16,7 @@ _Z4swapPiS_:
 	movl	12(%ebp), %eax
 	movl	-4(%ebp), %edx
 	movl	%edx, (%eax)
+	nop
 	leave
 	ret
 	.size	_Z4swapPiS_, .-_Z4swapPiS_
@@ -26,11 +27,18 @@ _Z10bubbleSortPii:
 	movl	%esp, %ebp
 	subl	$16, %esp
 	movl	$0, -8(%ebp)
-	jmp	.L3
 .L7:
+	movl	12(%ebp), %eax
+	subl	$1, %eax
+	cmpl	-8(%ebp), %eax
+	jle	.L8
 	movl	$0, -4(%ebp)
-	jmp	.L4
 .L6:
+	movl	12(%ebp), %eax
+	subl	-8(%ebp), %eax
+	subl	$1, %eax
+	cmpl	-4(%ebp), %eax
+	jle	.L4
 	movl	-4(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -59,18 +67,12 @@ _Z10bubbleSortPii:
 	addl	$8, %esp
 .L5:
 	addl	$1, -4(%ebp)
+	jmp	.L6
 .L4:
-	movl	12(%ebp), %eax
-	subl	-8(%ebp), %eax
-	subl	$1, %eax
-	cmpl	-4(%ebp), %eax
-	jg	.L6
 	addl	$1, -8(%ebp)
-.L3:
-	movl	12(%ebp), %eax
-	subl	$1, %eax
-	cmpl	-8(%ebp), %eax
-	jg	.L7
+	jmp	.L7
+.L8:
+	nop
 	leave
 	ret
 	.size	_Z10bubbleSortPii, .-_Z10bubbleSortPii
@@ -104,13 +106,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L10
+	je	.L11
 	call	__stack_chk_fail
-.L10:
+.L11:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

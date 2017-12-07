@@ -10,8 +10,10 @@ _Z6getMaxPii:
 	movl	(%eax), %eax
 	movl	%eax, -8(%ebp)
 	movl	$1, -4(%ebp)
-	jmp	.L2
 .L4:
+	movl	-4(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L2
 	movl	-4(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -27,10 +29,8 @@ _Z6getMaxPii:
 	movl	%eax, -8(%ebp)
 .L3:
 	addl	$1, -4(%ebp)
+	jmp	.L4
 .L2:
-	movl	-4(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L4
 	movl	-8(%ebp), %eax
 	leave
 	ret
@@ -75,8 +75,10 @@ _Z9countSortPiii:
 	movl	%edx, %edi
 	rep stosl
 	movl	$0, -64(%ebp)
-	jmp	.L7
 .L8:
+	movl	-64(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L7
 	movl	-64(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	-76(%ebp), %eax
@@ -102,13 +104,12 @@ _Z9countSortPiii:
 	addl	$1, %eax
 	movl	%eax, -52(%ebp,%edx,4)
 	addl	$1, -64(%ebp)
+	jmp	.L8
 .L7:
-	movl	-64(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L8
 	movl	$1, -64(%ebp)
-	jmp	.L9
 .L10:
+	cmpl	$9, -64(%ebp)
+	jg	.L9
 	movl	-64(%ebp), %eax
 	movl	-52(%ebp,%eax,4), %edx
 	movl	-64(%ebp), %eax
@@ -118,14 +119,14 @@ _Z9countSortPiii:
 	movl	-64(%ebp), %eax
 	movl	%edx, -52(%ebp,%eax,4)
 	addl	$1, -64(%ebp)
+	jmp	.L10
 .L9:
-	cmpl	$9, -64(%ebp)
-	jle	.L10
 	movl	12(%ebp), %eax
 	subl	$1, %eax
 	movl	%eax, -64(%ebp)
-	jmp	.L11
 .L12:
+	cmpl	$0, -64(%ebp)
+	js	.L11
 	movl	-64(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	-76(%ebp), %eax
@@ -181,12 +182,13 @@ _Z9countSortPiii:
 	subl	$1, %eax
 	movl	%eax, -52(%ebp,%edx,4)
 	subl	$1, -64(%ebp)
+	jmp	.L12
 .L11:
-	cmpl	$0, -64(%ebp)
-	jns	.L12
 	movl	$0, -64(%ebp)
-	jmp	.L13
 .L14:
+	movl	-64(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L13
 	movl	-64(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	-76(%ebp), %eax
@@ -196,11 +198,10 @@ _Z9countSortPiii:
 	movl	(%eax,%edx,4), %eax
 	movl	%eax, (%ecx)
 	addl	$1, -64(%ebp)
+	jmp	.L14
 .L13:
-	movl	-64(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L14
 	movl	%ebx, %esp
+	nop
 	movl	-12(%ebp), %eax
 	xorl	%gs:20, %eax
 	je	.L15
@@ -224,8 +225,12 @@ _Z9radixsortPii:
 	addl	$8, %esp
 	movl	%eax, -12(%ebp)
 	movl	$1, -16(%ebp)
-	jmp	.L17
 .L18:
+	movl	-12(%ebp), %eax
+	cltd
+	idivl	-16(%ebp)
+	testl	%eax, %eax
+	jle	.L19
 	subl	$4, %esp
 	pushl	-16(%ebp)
 	pushl	12(%ebp)
@@ -238,12 +243,9 @@ _Z9radixsortPii:
 	addl	%edx, %eax
 	addl	%eax, %eax
 	movl	%eax, -16(%ebp)
-.L17:
-	movl	-12(%ebp), %eax
-	cltd
-	idivl	-16(%ebp)
-	testl	%eax, %eax
-	jg	.L18
+	jmp	.L18
+.L19:
+	nop
 	leave
 	ret
 	.size	_Z9radixsortPii, .-_Z9radixsortPii
@@ -278,13 +280,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L21
+	je	.L22
 	call	__stack_chk_fail
-.L21:
+.L22:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

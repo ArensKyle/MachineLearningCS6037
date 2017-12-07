@@ -16,6 +16,7 @@ _Z4swapPiS_:
 	movl	12(%ebp), %eax
 	movl	-4(%ebp), %edx
 	movl	%edx, (%eax)
+	nop
 	leave
 	ret
 	.size	_Z4swapPiS_, .-_Z4swapPiS_
@@ -73,7 +74,7 @@ _Z7heapifyPiii:
 .L4:
 	movl	-20(%ebp), %eax
 	cmpl	16(%ebp), %eax
-	je	.L2
+	je	.L6
 	movl	-20(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -92,7 +93,8 @@ _Z7heapifyPiii:
 	pushl	8(%ebp)
 	call	_Z7heapifyPiii
 	addl	$16, %esp
-.L2:
+.L6:
+	nop
 	leave
 	ret
 	.size	_Z7heapifyPiii, .-_Z7heapifyPiii
@@ -109,8 +111,9 @@ _Z8heapSortPii:
 	sarl	%eax
 	subl	$1, %eax
 	movl	%eax, -16(%ebp)
-	jmp	.L7
-.L8:
+.L9:
+	cmpl	$0, -16(%ebp)
+	js	.L8
 	subl	$4, %esp
 	pushl	-16(%ebp)
 	pushl	12(%ebp)
@@ -118,14 +121,14 @@ _Z8heapSortPii:
 	call	_Z7heapifyPiii
 	addl	$16, %esp
 	subl	$1, -16(%ebp)
-.L7:
-	cmpl	$0, -16(%ebp)
-	jns	.L8
+	jmp	.L9
+.L8:
 	movl	12(%ebp), %eax
 	subl	$1, %eax
 	movl	%eax, -12(%ebp)
-	jmp	.L9
-.L10:
+.L11:
+	cmpl	$0, -12(%ebp)
+	js	.L12
 	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -142,9 +145,9 @@ _Z8heapSortPii:
 	call	_Z7heapifyPiii
 	addl	$16, %esp
 	subl	$1, -12(%ebp)
-.L9:
-	cmpl	$0, -12(%ebp)
-	jns	.L10
+	jmp	.L11
+.L12:
+	nop
 	leave
 	ret
 	.size	_Z8heapSortPii, .-_Z8heapSortPii
@@ -179,13 +182,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L13
+	je	.L15
 	call	__stack_chk_fail
-.L13:
+.L15:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

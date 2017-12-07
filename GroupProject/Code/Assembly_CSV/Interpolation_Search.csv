@@ -1,10 +1,12 @@
 pushl, 7
 movl, 55
 subl, 8
-jmp, 3
-fildl, 4
+cmpl, 5
+jg, 2
 leal, 10
 addl, 9
+jl, 1
+fildl, 4
 fdivrp, 1
 fmulp, 1
 faddp, 1
@@ -14,10 +16,9 @@ movb, 1
 movw, 1
 fldcw, 2
 fistpl, 1
-cmpl, 5
 jne, 1
-jge, 2
-jg, 2
+jmp, 3
+jge, 1
 andl, 1
 xorl, 2
 call, 2

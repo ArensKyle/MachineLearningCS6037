@@ -8,19 +8,18 @@ _Z9quicksortPiii:
 	subl	$24, %esp
 	movl	12(%ebp), %eax
 	cmpl	16(%ebp), %eax
-	jge	.L1
+	jge	.L9
 	movl	12(%ebp), %eax
 	movl	%eax, -16(%ebp)
 	movl	12(%ebp), %eax
 	movl	%eax, -24(%ebp)
 	movl	16(%ebp), %eax
 	movl	%eax, -20(%ebp)
-	jmp	.L3
-.L9:
-	jmp	.L4
-.L6:
-	addl	$1, -24(%ebp)
-.L4:
+.L8:
+	movl	-24(%ebp), %eax
+	cmpl	-20(%ebp), %eax
+	jge	.L3
+.L5:
 	movl	-24(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -32,15 +31,13 @@ _Z9quicksortPiii:
 	addl	%ecx, %eax
 	movl	(%eax), %eax
 	cmpl	%eax, %edx
-	jg	.L5
+	jg	.L4
 	movl	-24(%ebp), %eax
 	cmpl	16(%ebp), %eax
-	jl	.L6
-.L5:
-	jmp	.L7
-.L8:
-	subl	$1, -20(%ebp)
-.L7:
+	jge	.L4
+	addl	$1, -24(%ebp)
+	jmp	.L5
+.L4:
 	movl	-20(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -52,10 +49,13 @@ _Z9quicksortPiii:
 	addl	%ecx, %eax
 	movl	(%eax), %eax
 	cmpl	%eax, %edx
-	jg	.L8
+	jle	.L6
+	subl	$1, -20(%ebp)
+	jmp	.L4
+.L6:
 	movl	-24(%ebp), %eax
 	cmpl	-20(%ebp), %eax
-	jge	.L3
+	jge	.L8
 	movl	-24(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -78,10 +78,8 @@ _Z9quicksortPiii:
 	addl	%eax, %edx
 	movl	-12(%ebp), %eax
 	movl	%eax, (%edx)
+	jmp	.L8
 .L3:
-	movl	-24(%ebp), %eax
-	cmpl	-20(%ebp), %eax
-	jl	.L9
 	movl	-16(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -120,7 +118,8 @@ _Z9quicksortPiii:
 	pushl	8(%ebp)
 	call	_Z9quicksortPiii
 	addl	$16, %esp
-.L1:
+.L9:
+	nop
 	leave
 	ret
 	.size	_Z9quicksortPiii, .-_Z9quicksortPiii
@@ -166,5 +165,5 @@ main:
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

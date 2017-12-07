@@ -1,8 +1,8 @@
 pushl, 12
 movl, 37
 cmpl, 6
-jge, 1
-jmp, 6
+jge, 2
+jmp, 4
 popl, 1
 subl, 7
 fildl, 3
@@ -16,12 +16,12 @@ movb, 2
 movw, 2
 fldcw, 4
 fistpl, 2
-faddp, 1
-jl, 2
 setl, 1
 testb, 2
-jne, 2
+je, 3
+faddp, 1
+jl, 1
 sete, 1
-je, 2
+jne, 1
 andl, 1
 xorl, 2

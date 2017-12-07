@@ -36,8 +36,21 @@ _Z10jumpSearchPiii:
 	fistpl	-16(%ebp)
 	fldcw	-26(%ebp)
 	movl	$0, -12(%ebp)
-	jmp	.L5
-.L7:
+.L8:
+	subl	$8, %esp
+	pushl	16(%ebp)
+	pushl	-16(%ebp)
+	call	_Z3minii
+	addl	$16, %esp
+	addl	$1073741823, %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	cmpl	12(%ebp), %eax
+	setl	%al
+	testb	%al, %al
+	je	.L5
 	movl	-16(%ebp), %eax
 	movl	%eax, -12(%ebp)
 	fildl	16(%ebp)
@@ -57,26 +70,17 @@ _Z10jumpSearchPiii:
 	fldcw	-26(%ebp)
 	movl	-12(%ebp), %eax
 	cmpl	16(%ebp), %eax
-	jl	.L5
+	jl	.L8
 	movl	$-1, %eax
-	jmp	.L6
+	jmp	.L7
 .L5:
-	subl	$8, %esp
-	pushl	16(%ebp)
-	pushl	-16(%ebp)
-	call	_Z3minii
-	addl	$16, %esp
-	addl	$1073741823, %eax
+	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	12(%ebp), %eax
-	setl	%al
-	testb	%al, %al
-	jne	.L7
-	jmp	.L8
-.L9:
+	jge	.L9
 	addl	$1, -12(%ebp)
 	subl	$8, %esp
 	pushl	16(%ebp)
@@ -86,29 +90,22 @@ _Z10jumpSearchPiii:
 	cmpl	-12(%ebp), %eax
 	sete	%al
 	testb	%al, %al
-	je	.L8
+	je	.L5
 	movl	$-1, %eax
-	jmp	.L6
-.L8:
+	jmp	.L7
+.L9:
 	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	12(%ebp), %eax
-	jl	.L9
+	jne	.L11
 	movl	-12(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	8(%ebp), %eax
-	addl	%edx, %eax
-	movl	(%eax), %eax
-	cmpl	12(%ebp), %eax
-	jne	.L10
-	movl	-12(%ebp), %eax
-	jmp	.L6
-.L10:
+	jmp	.L7
+.L11:
 	movl	$-1, %eax
-.L6:
+.L7:
 	leave
 	ret
 	.size	_Z10jumpSearchPiii, .-_Z10jumpSearchPiii
@@ -145,13 +142,13 @@ main:
 	movl	-44(%ebp), %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L13
+	je	.L14
 	call	__stack_chk_fail
-.L13:
+.L14:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

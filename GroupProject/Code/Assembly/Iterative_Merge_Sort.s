@@ -8,7 +8,7 @@ _Z9mergeSortPiii:
 	subl	$24, %esp
 	movl	12(%ebp), %eax
 	cmpl	16(%ebp), %eax
-	jge	.L1
+	jge	.L3
 	movl	16(%ebp), %eax
 	subl	12(%ebp), %eax
 	movl	%eax, %edx
@@ -39,7 +39,8 @@ _Z9mergeSortPiii:
 	pushl	8(%ebp)
 	call	_Z5mergePiiii
 	addl	$16, %esp
-.L1:
+.L3:
+	nop
 	leave
 	ret
 	.size	_Z9mergeSortPiii, .-_Z9mergeSortPiii
@@ -103,8 +104,10 @@ _Z5mergePiiii:
 	sall	$2, %eax
 	movl	%eax, -16(%ebp)
 	movl	$0, -48(%ebp)
-	jmp	.L4
-.L5:
+.L6:
+	movl	-48(%ebp), %eax
+	cmpl	-36(%ebp), %eax
+	jge	.L5
 	movl	12(%ebp), %edx
 	movl	-48(%ebp), %eax
 	addl	%edx, %eax
@@ -116,13 +119,13 @@ _Z5mergePiiii:
 	movl	-48(%ebp), %edx
 	movl	%ecx, (%eax,%edx,4)
 	addl	$1, -48(%ebp)
-.L4:
-	movl	-48(%ebp), %eax
-	cmpl	-36(%ebp), %eax
-	jl	.L5
-	movl	$0, -44(%ebp)
 	jmp	.L6
-.L7:
+.L5:
+	movl	$0, -44(%ebp)
+.L8:
+	movl	-44(%ebp), %eax
+	cmpl	-32(%ebp), %eax
+	jge	.L7
 	movl	16(%ebp), %eax
 	leal	1(%eax), %edx
 	movl	-44(%ebp), %eax
@@ -135,16 +138,19 @@ _Z5mergePiiii:
 	movl	-44(%ebp), %edx
 	movl	%ecx, (%eax,%edx,4)
 	addl	$1, -44(%ebp)
-.L6:
-	movl	-44(%ebp), %eax
-	cmpl	-32(%ebp), %eax
-	jl	.L7
+	jmp	.L8
+.L7:
 	movl	$0, -48(%ebp)
 	movl	$0, -44(%ebp)
 	movl	12(%ebp), %eax
 	movl	%eax, -40(%ebp)
-	jmp	.L8
 .L12:
+	movl	-48(%ebp), %eax
+	cmpl	-36(%ebp), %eax
+	jge	.L9
+	movl	-44(%ebp), %eax
+	cmpl	-32(%ebp), %eax
+	jge	.L9
 	movl	-24(%ebp), %eax
 	movl	-48(%ebp), %edx
 	movl	(%eax,%edx,4), %ecx
@@ -152,7 +158,7 @@ _Z5mergePiiii:
 	movl	-44(%ebp), %edx
 	movl	(%eax,%edx,4), %eax
 	cmpl	%eax, %ecx
-	jg	.L9
+	jg	.L10
 	movl	-40(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	-60(%ebp), %eax
@@ -162,8 +168,8 @@ _Z5mergePiiii:
 	movl	(%eax,%edx,4), %eax
 	movl	%eax, (%ecx)
 	addl	$1, -48(%ebp)
-	jmp	.L10
-.L9:
+	jmp	.L11
+.L10:
 	movl	-40(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	-60(%ebp), %eax
@@ -173,54 +179,47 @@ _Z5mergePiiii:
 	movl	(%eax,%edx,4), %eax
 	movl	%eax, (%ecx)
 	addl	$1, -44(%ebp)
-.L10:
+.L11:
 	addl	$1, -40(%ebp)
-.L8:
+	jmp	.L12
+.L9:
 	movl	-48(%ebp), %eax
 	cmpl	-36(%ebp), %eax
-	jge	.L11
+	jge	.L13
+	movl	-40(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	-60(%ebp), %eax
+	leal	(%edx,%eax), %ecx
+	movl	-24(%ebp), %eax
+	movl	-48(%ebp), %edx
+	movl	(%eax,%edx,4), %eax
+	movl	%eax, (%ecx)
+	addl	$1, -48(%ebp)
+	addl	$1, -40(%ebp)
+	jmp	.L9
+.L13:
 	movl	-44(%ebp), %eax
 	cmpl	-32(%ebp), %eax
-	jl	.L12
-.L11:
+	jge	.L14
+	movl	-40(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	-60(%ebp), %eax
+	leal	(%edx,%eax), %ecx
+	movl	-16(%ebp), %eax
+	movl	-44(%ebp), %edx
+	movl	(%eax,%edx,4), %eax
+	movl	%eax, (%ecx)
+	addl	$1, -44(%ebp)
+	addl	$1, -40(%ebp)
 	jmp	.L13
 .L14:
-	movl	-40(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	-60(%ebp), %eax
-	leal	(%edx,%eax), %ecx
-	movl	-24(%ebp), %eax
-	movl	-48(%ebp), %edx
-	movl	(%eax,%edx,4), %eax
-	movl	%eax, (%ecx)
-	addl	$1, -48(%ebp)
-	addl	$1, -40(%ebp)
-.L13:
-	movl	-48(%ebp), %eax
-	cmpl	-36(%ebp), %eax
-	jl	.L14
-	jmp	.L15
-.L16:
-	movl	-40(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	-60(%ebp), %eax
-	leal	(%edx,%eax), %ecx
-	movl	-16(%ebp), %eax
-	movl	-44(%ebp), %edx
-	movl	(%eax,%edx,4), %eax
-	movl	%eax, (%ecx)
-	addl	$1, -44(%ebp)
-	addl	$1, -40(%ebp)
-.L15:
-	movl	-44(%ebp), %eax
-	cmpl	-32(%ebp), %eax
-	jl	.L16
 	movl	%ebx, %esp
+	nop
 	movl	-12(%ebp), %eax
 	xorl	%gs:20, %eax
-	je	.L17
+	je	.L15
 	call	__stack_chk_fail
-.L17:
+.L15:
 	movl	-4(%ebp), %ebx
 	leave
 	ret
@@ -259,13 +258,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L20
+	je	.L18
 	call	__stack_chk_fail
-.L20:
+.L18:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

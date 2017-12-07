@@ -2,7 +2,7 @@ pushl, 19
 movl, 108
 subl, 16
 cmpl, 8
-jge, 2
+jge, 7
 shrl, 3
 addl, 27
 sarl, 1
@@ -13,7 +13,6 @@ leal, 16
 divl, 2
 imull, 2
 jmp, 6
-jl, 5
 jg, 1
 je, 2
 andl, 1

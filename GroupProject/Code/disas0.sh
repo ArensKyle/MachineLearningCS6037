@@ -6,7 +6,7 @@ for filename in Sample_Programs/*; do
 
   #gcc -s "$filename"
 
-  g++ -fno-asynchronous-unwind-tables -fno-exceptions -fno-rtti -Wall -Wextra -m32 "$filename" -S -o Assembly/"$ActFile".s -lm
+  g++ -fno-asynchronous-unwind-tables -fno-exceptions -fno-rtti -Wall -Wextra -m32 "$filename" -S -lm -o Assembly/"$ActFile".s
 
   #objdump -d -j .text a.out  > Assembly/"$ActFile"-disas.txt
   #rm "$ActFile".S

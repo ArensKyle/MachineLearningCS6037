@@ -1,0 +1,17 @@
+pushl, 59
+movl, 103
+subl, 30
+fldl, 35
+fstpl, 34
+popl, 2
+addl, 21
+xorl, 12
+leal, 26
+call, 26
+je, 6
+ret, 5
+andl, 1
+fmull, 2
+fsubp, 2
+fxch, 1
+faddp, 2

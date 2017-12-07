@@ -7,8 +7,10 @@ _Z13insertionSortPii:
 	movl	%esp, %ebp
 	subl	$16, %esp
 	movl	$1, -12(%ebp)
-	jmp	.L2
-.L6:
+.L5:
+	movl	-12(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L6
 	movl	-12(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -18,8 +20,16 @@ _Z13insertionSortPii:
 	movl	-12(%ebp), %eax
 	subl	$1, %eax
 	movl	%eax, -8(%ebp)
-	jmp	.L3
-.L5:
+.L4:
+	cmpl	$0, -8(%ebp)
+	js	.L3
+	movl	-8(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	cmpl	-4(%ebp), %eax
+	jle	.L3
 	movl	-8(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -32,17 +42,8 @@ _Z13insertionSortPii:
 	movl	(%eax), %eax
 	movl	%eax, (%edx)
 	subl	$1, -8(%ebp)
+	jmp	.L4
 .L3:
-	cmpl	$0, -8(%ebp)
-	js	.L4
-	movl	-8(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	8(%ebp), %eax
-	addl	%edx, %eax
-	movl	(%eax), %eax
-	cmpl	-4(%ebp), %eax
-	jg	.L5
-.L4:
 	movl	-8(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -51,10 +52,9 @@ _Z13insertionSortPii:
 	movl	-4(%ebp), %eax
 	movl	%eax, (%edx)
 	addl	$1, -12(%ebp)
-.L2:
-	movl	-12(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L6
+	jmp	.L5
+.L6:
+	nop
 	leave
 	ret
 	.size	_Z13insertionSortPii, .-_Z13insertionSortPii
@@ -96,5 +96,5 @@ main:
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

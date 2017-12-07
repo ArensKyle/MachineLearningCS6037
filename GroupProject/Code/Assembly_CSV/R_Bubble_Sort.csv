@@ -2,13 +2,11 @@ pushl, 11
 movl, 40
 subl, 7
 cmpl, 3
-jne, 1
-jmp, 2
+je, 2
+jle, 2
 leal, 7
 addl, 10
-jle, 1
 call, 4
-jg, 1
+jmp, 2
 andl, 1
 xorl, 2
-je, 1

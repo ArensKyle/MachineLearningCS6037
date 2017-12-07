@@ -7,8 +7,10 @@ _Z10linearSortPiii:
 	movl	%esp, %ebp
 	subl	$16, %esp
 	movl	$0, -4(%ebp)
-	jmp	.L2
 .L5:
+	movl	-4(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L2
 	movl	-4(%ebp), %eax
 	leal	0(,%eax,4), %edx
 	movl	8(%ebp), %eax
@@ -20,10 +22,8 @@ _Z10linearSortPiii:
 	jmp	.L4
 .L3:
 	addl	$1, -4(%ebp)
+	jmp	.L5
 .L2:
-	movl	-4(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L5
 	movl	$-1, %eax
 .L4:
 	leave
@@ -69,5 +69,5 @@ main:
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

@@ -78,8 +78,10 @@ _Z13insertionSortPii:
 	movl	%esp, %ebp
 	subl	$24, %esp
 	movl	$1, -24(%ebp)
-	jmp	.L9
 .L12:
+	movl	-24(%ebp), %eax
+	cmpl	12(%ebp), %eax
+	jge	.L13
 	movl	-24(%ebp), %eax
 	subl	$1, %eax
 	movl	%eax, -20(%ebp)
@@ -96,8 +98,10 @@ _Z13insertionSortPii:
 	call	_Z12binarySearchPiiii
 	addl	$16, %esp
 	movl	%eax, -12(%ebp)
-	jmp	.L10
 .L11:
+	movl	-20(%ebp), %eax
+	cmpl	-12(%ebp), %eax
+	jl	.L10
 	movl	-20(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -110,10 +114,8 @@ _Z13insertionSortPii:
 	movl	(%eax), %eax
 	movl	%eax, (%edx)
 	subl	$1, -20(%ebp)
+	jmp	.L11
 .L10:
-	movl	-20(%ebp), %eax
-	cmpl	-12(%ebp), %eax
-	jge	.L11
 	movl	-20(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -122,10 +124,9 @@ _Z13insertionSortPii:
 	movl	-16(%ebp), %eax
 	movl	%eax, (%edx)
 	addl	$1, -24(%ebp)
-.L9:
-	movl	-24(%ebp), %eax
-	cmpl	12(%ebp), %eax
-	jl	.L12
+	jmp	.L12
+.L13:
+	nop
 	leave
 	ret
 	.size	_Z13insertionSortPii, .-_Z13insertionSortPii
@@ -160,13 +161,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L15
+	je	.L16
 	call	__stack_chk_fail
-.L15:
+.L16:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

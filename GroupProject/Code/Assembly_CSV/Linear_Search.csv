@@ -1,12 +1,12 @@
 pushl, 7
 movl, 24
 subl, 2
-jmp, 2
+cmpl, 2
+jge, 1
 leal, 4
 addl, 3
-cmpl, 2
 jne, 1
-jl, 1
+jmp, 2
 andl, 1
 xorl, 2
 call, 2

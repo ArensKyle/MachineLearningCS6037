@@ -10,8 +10,24 @@ _Z19interpolationSearchPiii:
 	movl	12(%ebp), %eax
 	subl	$1, %eax
 	movl	%eax, -8(%ebp)
-	jmp	.L2
 .L7:
+	movl	-12(%ebp), %eax
+	cmpl	-8(%ebp), %eax
+	jg	.L2
+	movl	-12(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	cmpl	16(%ebp), %eax
+	jg	.L2
+	movl	-8(%ebp), %eax
+	leal	0(,%eax,4), %edx
+	movl	8(%ebp), %eax
+	addl	%edx, %eax
+	movl	(%eax), %eax
+	cmpl	16(%ebp), %eax
+	jl	.L2
 	fildl	-12(%ebp)
 	movl	-8(%ebp), %eax
 	subl	-12(%ebp), %eax
@@ -71,30 +87,13 @@ _Z19interpolationSearchPiii:
 	movl	-4(%ebp), %eax
 	addl	$1, %eax
 	movl	%eax, -12(%ebp)
-	jmp	.L2
+	jmp	.L7
 .L5:
 	movl	-4(%ebp), %eax
 	subl	$1, %eax
 	movl	%eax, -8(%ebp)
+	jmp	.L7
 .L2:
-	movl	-12(%ebp), %eax
-	cmpl	-8(%ebp), %eax
-	jg	.L6
-	movl	-12(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	8(%ebp), %eax
-	addl	%edx, %eax
-	movl	(%eax), %eax
-	cmpl	16(%ebp), %eax
-	jg	.L6
-	movl	-8(%ebp), %eax
-	leal	0(,%eax,4), %edx
-	movl	8(%ebp), %eax
-	addl	%edx, %eax
-	movl	(%eax), %eax
-	cmpl	16(%ebp), %eax
-	jge	.L7
-.L6:
 	movl	$-1, %eax
 .L4:
 	leave
@@ -141,5 +140,5 @@ main:
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits

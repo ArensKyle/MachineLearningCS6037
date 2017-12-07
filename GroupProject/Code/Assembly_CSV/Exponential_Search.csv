@@ -6,14 +6,15 @@ jmp, 6
 popl, 1
 subl, 6
 jne, 2
-sall, 1
 leal, 6
 addl, 12
-jle, 2
+jg, 1
+sall, 1
 call, 6
 shrl, 2
 sarl, 2
 jl, 1
+jle, 1
 andl, 1
 xorl, 2
 je, 1

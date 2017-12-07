@@ -9,10 +9,10 @@ _Z3minii:
 	cmpl	12(%ebp), %eax
 	jg	.L2
 	movl	8(%ebp), %eax
-	jmp	.L3
+	jmp	.L4
 .L2:
 	movl	12(%ebp), %eax
-.L3:
+.L4:
 	popl	%ebp
 	ret
 	.size	_Z3minii, .-_Z3minii
@@ -28,8 +28,10 @@ _Z18fibMonaccianSearchPiii:
 	movl	-16(%ebp), %eax
 	addl	%edx, %eax
 	movl	%eax, -12(%ebp)
-	jmp	.L6
 .L7:
+	movl	-12(%ebp), %eax
+	cmpl	16(%ebp), %eax
+	jge	.L6
 	movl	-16(%ebp), %eax
 	movl	%eax, -20(%ebp)
 	movl	-12(%ebp), %eax
@@ -38,13 +40,12 @@ _Z18fibMonaccianSearchPiii:
 	movl	-16(%ebp), %eax
 	addl	%edx, %eax
 	movl	%eax, -12(%ebp)
+	jmp	.L7
 .L6:
-	movl	-12(%ebp), %eax
-	cmpl	16(%ebp), %eax
-	jl	.L7
 	movl	$-1, -8(%ebp)
-	jmp	.L8
-.L12:
+.L13:
+	cmpl	$1, -12(%ebp)
+	jle	.L8
 	movl	16(%ebp), %eax
 	leal	-1(%eax), %edx
 	movl	-8(%ebp), %ecx
@@ -71,7 +72,7 @@ _Z18fibMonaccianSearchPiii:
 	movl	%eax, -20(%ebp)
 	movl	-4(%ebp), %eax
 	movl	%eax, -8(%ebp)
-	jmp	.L8
+	jmp	.L13
 .L9:
 	movl	-4(%ebp), %eax
 	leal	0(,%eax,4), %edx
@@ -79,7 +80,7 @@ _Z18fibMonaccianSearchPiii:
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	12(%ebp), %eax
-	jle	.L10
+	jle	.L11
 	movl	-20(%ebp), %eax
 	movl	%eax, -12(%ebp)
 	movl	-20(%ebp), %eax
@@ -87,15 +88,13 @@ _Z18fibMonaccianSearchPiii:
 	movl	-12(%ebp), %eax
 	subl	-16(%ebp), %eax
 	movl	%eax, -20(%ebp)
-	jmp	.L8
-.L10:
+	jmp	.L13
+.L11:
 	movl	-4(%ebp), %eax
-	jmp	.L11
+	jmp	.L12
 .L8:
-	cmpl	$1, -12(%ebp)
-	jg	.L12
 	cmpl	$0, -16(%ebp)
-	je	.L13
+	je	.L14
 	movl	-8(%ebp), %eax
 	addl	$1, %eax
 	leal	0(,%eax,4), %edx
@@ -103,13 +102,13 @@ _Z18fibMonaccianSearchPiii:
 	addl	%edx, %eax
 	movl	(%eax), %eax
 	cmpl	12(%ebp), %eax
-	jne	.L13
+	jne	.L14
 	movl	-8(%ebp), %eax
 	addl	$1, %eax
-	jmp	.L11
-.L13:
+	jmp	.L12
+.L14:
 	movl	$-1, %eax
-.L11:
+.L12:
 	leave
 	ret
 	.size	_Z18fibMonaccianSearchPiii, .-_Z18fibMonaccianSearchPiii
@@ -145,13 +144,13 @@ main:
 	movl	$0, %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
-	je	.L16
+	je	.L17
 	call	__stack_chk_fail
-.L16:
+.L17:
 	movl	-4(%ebp), %ecx
 	leave
 	leal	-4(%ecx), %esp
 	ret
 	.size	main, .-main
-	.ident	"GCC: (Ubuntu 4.9.2-10ubuntu13) 4.9.2"
+	.ident	"GCC: (Ubuntu 5.1.1-4ubuntu12) 5.1.1 20150504"
 	.section	.note.GNU-stack,"",@progbits
