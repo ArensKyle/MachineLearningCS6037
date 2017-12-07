@@ -1,6 +1,5 @@
 // CPP example to illustrate the rotation 
 // of a point about another point
-#include <iostream>
 #include <complex>
  
 using namespace std;
@@ -12,11 +11,6 @@ typedef complex<double> point;
 // Constant PI for providing angles in radians
 #define PI 3.1415926535897932384626
  
-// Function used to display X and Y coordinates of a point
-void displayPoint(point P)
-{
-    cout << "(" << P.x << ", " << P.y << ")" << endl;
-}
  
 //Function for Rotation of P about Q by angle theta
 point rotate(point P, point Q, double theta)
@@ -34,8 +28,7 @@ int main()
     double theta = PI/2;
      
     point P_rotated = rotate(P, Q, theta);
-    cout << "The point P on rotating 90 degrees anti-clockwise about Q becomes:";
-    cout << "P_rotated"; displayPoint(P_rotated);
+
  
     return 0;
 }

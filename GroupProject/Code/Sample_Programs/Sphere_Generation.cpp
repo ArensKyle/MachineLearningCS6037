@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cmath>
  
 // this header file contains get<0> and get<1> function
@@ -291,22 +290,7 @@ void drawsphere(int x, int y, int z, int r)
     }
 }
 // Print out all the voxels of discrete sphere
-void showallpoints(map<int, list<pair<int, int> > >& mymap)
-{
-    int count = 0;
- 
-    for (itr = mymap.begin(); itr != mymap.end(); ++itr) {
-        list<pair<int, int> > l = itr->second;
-        list<pair<int, int> >::iterator it;
-        for (it = l.begin(); it != l.end(); ++it) {
-            cout << itr->first << ", " << get<0>(*it)
-                 << ", " << get<1>(*it) << endl;
-            count += 1;
-        }
-    }
-    cout << endl;
-    cout << count << endl;
-}
+
 // Driver program
 int main()
 {
@@ -315,5 +299,4 @@ int main()
     int r;
     cin >> r;
     drawsphere(cx, cy, cz, r);
-    showallpoints(mymap);
 }

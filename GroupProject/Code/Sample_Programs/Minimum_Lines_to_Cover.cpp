@@ -1,6 +1,10 @@
 // C++ program to get minimum lines to cover
 // all the points
-#include <bits/stdc++.h>
+#include <stdlib.h>
+#include <set>
+#include <vector>
+#include <utility>
+
 using namespace std;
  
 //  Utility method to get gcd of a and b
@@ -74,6 +78,6 @@ int main()
     };
  
     int N = sizeof(points) / sizeof(points[0]);
-    cout << minLinesToCoverPoints(points, N, xO, yO);
-    return 0;
+    int result = minLinesToCoverPoints(points, N, xO, yO);
+    return result;
 }
