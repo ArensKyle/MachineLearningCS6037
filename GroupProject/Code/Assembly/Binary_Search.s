@@ -93,7 +93,7 @@ main:
 	call	_Z12binarySearchPiiii
 	addl	$16, %esp
 	movl	%eax, -44(%ebp)
-	movl	$0, %eax
+	movl	-44(%ebp), %eax
 	movl	-12(%ebp), %edx
 	xorl	%gs:20, %edx
 	je	.L8
