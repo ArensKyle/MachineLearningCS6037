@@ -1,4 +1,4 @@
-// C program for implementation of merge sort
+// C program for implementation of recursive inseration sort
 #include <stdio.h>
 
 void insertionSortRecursive(int arr[], int n)
