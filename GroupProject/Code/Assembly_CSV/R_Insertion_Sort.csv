@@ -1,0 +1,13 @@
+pushl, 8
+movl, 36
+subl, 7
+cmpl, 3
+jg, 2
+jmp, 2
+call, 3
+addl, 10
+leal, 8
+js, 1
+andl, 1
+xorl, 2
+je, 1

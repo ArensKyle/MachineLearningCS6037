@@ -1,0 +1,16 @@
+pushl, 16
+movl, 34
+subl, 5
+cmpl, 3
+jl, 1
+shrl, 1
+addl, 8
+sarl, 1
+leal, 5
+jne, 1
+jmp, 3
+jle, 1
+call, 4
+andl, 1
+xorl, 2
+je, 1

@@ -1,0 +1,203 @@
+Sample_Programs/Binary_Insertion_Sort.cpp: In function ‘void insertionSort(int*, int)’:
+Sample_Programs/Binary_Insertion_Sort.cpp:21:20: warning: unused variable ‘k’ [-Wunused-variable]
+     int i, loc, j, k, selected;
+                    ^
+Sample_Programs/Binary_Search.cpp: In function ‘int main()’:
+Sample_Programs/Binary_Search.cpp:25:9: warning: unused variable ‘s’ [-Wunused-variable]
+     int s = binarySearch(arr, 0, n-1, 12);
+         ^
+In file included from Sample_Programs/Breadth_First_Traversal.cpp:4:0:
+/usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Breadth_First_Traversal.s'
+Sample_Programs/Exponential_Search.cpp: In function ‘int exponentialSearch(int*, int, int)’:
+Sample_Programs/Exponential_Search.cpp:15:43: error: ‘min’ was not declared in this scope
+     return binarySearch(arr, i/2, min(i, n), x);
+                                           ^
+Sample_Programs/Exponential_Search.cpp: In function ‘int main()’:
+Sample_Programs/Exponential_Search.cpp:42:5: error: ‘cout’ was not declared in this scope
+     cout << s;
+     ^
+Sample_Programs/Exponential_Search.cpp: In function ‘int exponentialSearch(int*, int, int)’:
+Sample_Programs/Exponential_Search.cpp:16:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Exponential_Search.s'
+Sample_Programs/Fib_Search.cpp: In function ‘int main()’:
+Sample_Programs/Fib_Search.cpp:53:9: warning: unused variable ‘s’ [-Wunused-variable]
+     int s = fibMonaccianSearch(arr, 12, n);
+         ^
+Sample_Programs/Heap_Sort.cpp: In function ‘void heapify(int*, int, int)’:
+Sample_Programs/Heap_Sort.cpp:18:34: error: ‘swap’ was not declared in this scope
+         swap(arr[i], arr[largest]);
+                                  ^
+Sample_Programs/Heap_Sort.cpp: In function ‘void heapSort(int*, int)’:
+Sample_Programs/Heap_Sort.cpp:31:28: error: ‘swap’ was not declared in this scope
+         swap(arr[0], arr[i]);
+                            ^
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Heap_Sort.s'
+Sample_Programs/Interpolation_Search.cpp: In function ‘int main()’:
+Sample_Programs/Interpolation_Search.cpp:31:5: error: ‘cout’ was not declared in this scope
+     cout << s;
+     ^
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Interpolation_Search.s'
+Sample_Programs/Jump_Search.cpp: In function ‘int jumpSearch(int*, int, int)’:
+Sample_Programs/Jump_Search.cpp:6:22: error: ‘sqrt’ was not declared in this scope
+     int step = sqrt(n);
+                      ^
+Sample_Programs/Jump_Search.cpp:9:27: error: ‘min’ was not declared in this scope
+     while (arr[min(step, n)-1] < x)
+                           ^
+Sample_Programs/Jump_Search.cpp:21:32: error: ‘min’ was not declared in this scope
+         if (prev == min(step, n))
+                                ^
+Sample_Programs/Jump_Search.cpp: In function ‘int main()’:
+Sample_Programs/Jump_Search.cpp:37:5: error: ‘cout’ was not declared in this scope
+     cout << s;
+     ^
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Jump_Search.s'
+g++: warning: Sample_Programs/Klees_Algorithm: linker input file unused because linking not done
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Klees_Algorithm.s'
+Sample_Programs/Linear_Search.cpp: In function ‘int main()’:
+Sample_Programs/Linear_Search.cpp:18:9: warning: unused variable ‘s’ [-Wunused-variable]
+     int s = linearSort(arr, n, 12);
+         ^
+Sample_Programs/Minimum_Lines_to_Cover.cpp:3:25: fatal error: bits/stdc++.h: No such file or directory
+ #include <bits/stdc++.h>
+                         ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Minimum_Lines_to_Cover.s'
+Sample_Programs/Pancake_Sort.cpp: In function ‘int pancakeSort(int*, int)’:
+Sample_Programs/Pancake_Sort.cpp:41:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Sample_Programs/Pidgeonhole_Sort.cpp:2:25: fatal error: bits/stdc++.h: No such file or directory
+ #include <bits/stdc++.h>
+                         ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Pidgeonhole_Sort.s'
+Sample_Programs/Points_On_A_Slope.cpp:3:25: fatal error: bits/stdc++.h: No such file or directory
+ #include <bits/stdc++.h>
+                         ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Points_On_A_Slope.s'
+In file included from Sample_Programs/Polygon_Clipping.cpp:3:0:
+/usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Polygon_Clipping.s'
+Sample_Programs/R_Bubble_Sort.cpp: In function ‘void bubbleSortR(int*, int)’:
+Sample_Programs/R_Bubble_Sort.cpp:12:34: error: ‘swap’ was not declared in this scope
+             swap(arr[i], arr[i+1]);
+                                  ^
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/R_Bubble_Sort.s'
+Sample_Programs/R_Linear_Search.cpp: In function ‘int main()’:
+Sample_Programs/R_Linear_Search.cpp:18:9: warning: unused variable ‘s’ [-Wunused-variable]
+     int s = recSearch(arr, 0, n-1, 12);
+         ^
+In file included from Sample_Programs/Rotation_Around_A_Point.cpp:3:0:
+/usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Rotation_Around_A_Point.s'
+In file included from Sample_Programs/Sphere_Generation.cpp:1:0:
+/usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
+compilation terminated.
+Traceback (most recent call last):
+  File "AssemCodeStrip.py", line 27, in <module>
+    main(sys.argv[1])
+  File "AssemCodeStrip.py", line 23, in main
+    readAssem(filepath)
+  File "AssemCodeStrip.py", line 6, in readAssem
+    currentFile = open(os.getcwd() + relativePath)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Sphere_Generation.s'

@@ -1,0 +1,14 @@
+pushl, 14
+movl, 51
+subl, 8
+jmp, 3
+leal, 9
+addl, 12
+cmpl, 5
+jl, 2
+jle, 1
+call, 5
+je, 2
+jg, 1
+andl, 1
+xorl, 2
