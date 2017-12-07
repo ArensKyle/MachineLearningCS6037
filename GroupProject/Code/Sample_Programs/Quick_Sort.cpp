@@ -1,4 +1,4 @@
-// C program for implementation of Bubble sort
+// C program for implementation of Quick sort
 #include <stdio.h>
 
 void quicksort(int number[25],int first,int last){
