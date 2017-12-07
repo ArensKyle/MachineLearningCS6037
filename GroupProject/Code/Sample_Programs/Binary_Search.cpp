@@ -23,5 +23,5 @@ int main()
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(arr)/sizeof(arr[0]);
     int s = binarySearch(arr, 0, n-1, 12);
-    return 0;
+    return s;
 }

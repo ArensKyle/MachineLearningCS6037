@@ -1,7 +1,18 @@
 // C program for implementation of exponential search
 #include <stdio.h>
 
+using namespace std;
+
 int binarySearch(int arr[], int, int, int);
+
+int min(int a, int b) {
+    if (a < b) {
+        return a;
+    }
+    else {
+        return b;
+    }
+}
  
 int exponentialSearch(int arr[], int n, int x)
 {
@@ -39,6 +50,5 @@ int main()
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(arr)/sizeof(arr[0]);
     int s = exponentialSearch(arr, n, 12);
-    cout << s;
-    return 0;
+    return s;
 }

@@ -1,6 +1,13 @@
 // C program for implementation of Recursive Bubble sort
 #include <stdio.h>
 
+void swap(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
 void bubbleSortR(int arr[], int n)
 {
     if (n == 1){
@@ -9,7 +16,7 @@ void bubbleSortR(int arr[], int n)
  
     for (int i=0; i<n-1; i++){
         if (arr[i] > arr[i+1]){
-            swap(arr[i], arr[i+1]);
+            swap(&arr[i], &arr[i+1]);
         }
     }
  
