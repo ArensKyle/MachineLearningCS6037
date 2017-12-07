@@ -1,7 +1,3 @@
-Sample_Programs/Binary_Insertion_Sort.cpp: In function ‘void insertionSort(int*, int)’:
-Sample_Programs/Binary_Insertion_Sort.cpp:21:20: warning: unused variable ‘k’ [-Wunused-variable]
-     int i, loc, j, k, selected;
-                    ^
 In file included from Sample_Programs/Breadth_First_Traversal.cpp:4:0:
 /usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
  #include <bits/c++config.h>
@@ -15,13 +11,24 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Breadth_First_Traversal.s'
+Sample_Programs/Bubble_Sort.cpp
+Sample_Programs/Exponential_Search.cpp
+Sample_Programs/Fib_Search.cpp
 Sample_Programs/Fib_Search.cpp: In function ‘int main()’:
 Sample_Programs/Fib_Search.cpp:53:9: warning: unused variable ‘s’ [-Wunused-variable]
      int s = fibMonaccianSearch(arr, 12, n);
          ^
-Sample_Programs/Klees_Algorithm.cpp:2:24: fatal error: bits/stdc++.h: No such file or directory
- #include<bits/stdc++.h>
-                        ^
+Sample_Programs/Heap_Sort.cpp
+Sample_Programs/Insertion_Sort.cpp
+Sample_Programs/Interpolation_Search.cpp
+Sample_Programs/Iterative_Merge_Sort.cpp
+Sample_Programs/Iterative_Quick_Sort.cpp
+Sample_Programs/Jump_Search.cpp
+Sample_Programs/Klees_Algorithm.cpp
+In file included from Sample_Programs/Klees_Algorithm.cpp:4:0:
+/usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
 compilation terminated.
 Traceback (most recent call last):
   File "AssemCodeStrip.py", line 27, in <module>
@@ -31,10 +38,13 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Klees_Algorithm.s'
+Sample_Programs/Linear_Search.cpp
 Sample_Programs/Linear_Search.cpp: In function ‘int main()’:
 Sample_Programs/Linear_Search.cpp:18:9: warning: unused variable ‘s’ [-Wunused-variable]
      int s = linearSort(arr, n, 12);
          ^
+Sample_Programs/Merge_Sort.cpp
+Sample_Programs/Minimum_Lines_to_Cover.cpp
 Sample_Programs/Minimum_Lines_to_Cover.cpp:3:25: fatal error: bits/stdc++.h: No such file or directory
  #include <bits/stdc++.h>
                          ^
@@ -47,13 +57,13 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Minimum_Lines_to_Cover.s'
-Sample_Programs/Pancake_Sort.cpp: In function ‘int pancakeSort(int*, int)’:
-Sample_Programs/Pancake_Sort.cpp:41:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
-Sample_Programs/Pidgeonhole_Sort.cpp:2:25: fatal error: bits/stdc++.h: No such file or directory
- #include <bits/stdc++.h>
-                         ^
+Sample_Programs/Pancake_Sort.cpp
+Sample_Programs/Pidgeonhole_Sort.cpp
+In file included from /usr/include/c++/4.9/vector:60:0,
+                 from Sample_Programs/Pidgeonhole_Sort.cpp:4:
+/usr/include/c++/4.9/bits/stl_algobase.h:59:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
 compilation terminated.
 Traceback (most recent call last):
   File "AssemCodeStrip.py", line 27, in <module>
@@ -63,9 +73,12 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Pidgeonhole_Sort.s'
-Sample_Programs/Points_On_A_Slope.cpp:3:25: fatal error: bits/stdc++.h: No such file or directory
- #include <bits/stdc++.h>
-                         ^
+Sample_Programs/Points_On_A_Slope.cpp
+In file included from /usr/include/c++/4.9/vector:60:0,
+                 from Sample_Programs/Points_On_A_Slope.cpp:5:
+/usr/include/c++/4.9/bits/stl_algobase.h:59:28: fatal error: bits/c++config.h: No such file or directory
+ #include <bits/c++config.h>
+                            ^
 compilation terminated.
 Traceback (most recent call last):
   File "AssemCodeStrip.py", line 27, in <module>
@@ -75,7 +88,8 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Points_On_A_Slope.s'
-In file included from Sample_Programs/Polygon_Clipping.cpp:3:0:
+Sample_Programs/Polygon_Clipping.cpp
+In file included from Sample_Programs/Polygon_Clipping.cpp:5:0:
 /usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
  #include <bits/c++config.h>
                             ^
@@ -88,10 +102,16 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Polygon_Clipping.s'
+Sample_Programs/Quick_Sort.cpp
+Sample_Programs/Radix_Sort.cpp
+Sample_Programs/R_Bubble_Sort.cpp
+Sample_Programs/R_Insertion_Sort.cpp
+Sample_Programs/R_Linear_Search.cpp
 Sample_Programs/R_Linear_Search.cpp: In function ‘int main()’:
 Sample_Programs/R_Linear_Search.cpp:18:9: warning: unused variable ‘s’ [-Wunused-variable]
      int s = recSearch(arr, 0, n-1, 12);
          ^
+Sample_Programs/Rotation_Around_A_Point.cpp
 In file included from Sample_Programs/Rotation_Around_A_Point.cpp:3:0:
 /usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
  #include <bits/c++config.h>
@@ -105,6 +125,8 @@ Traceback (most recent call last):
   File "AssemCodeStrip.py", line 6, in readAssem
     currentFile = open(os.getcwd() + relativePath)
 FileNotFoundError: [Errno 2] No such file or directory: '/home/sam/Desktop/Machine_Learning/MachineLearningCS6037/GroupProject/Code/Assembly/Rotation_Around_A_Point.s'
+Sample_Programs/Shell_Sort.cpp
+Sample_Programs/Sphere_Generation.cpp
 In file included from Sample_Programs/Sphere_Generation.cpp:1:0:
 /usr/include/c++/4.9/iostream:38:28: fatal error: bits/c++config.h: No such file or directory
  #include <bits/c++config.h>
