@@ -1,6 +1,5 @@
+// C program for implementation of Recursive Bubble sort
 #include <stdio.h>
-#include <iostream>
-using namespace std;
 
 void bubbleSortR(int arr[], int n)
 {
