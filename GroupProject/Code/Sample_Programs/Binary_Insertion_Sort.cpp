@@ -18,7 +18,7 @@ int binarySearch(int a[], int item, int low, int high)
  
 void insertionSort(int a[], int n)
 {
-    int i, loc, j, k, selected;
+    int i, loc, j, selected;
  
     for (i = 1; i < n; ++i)
     {

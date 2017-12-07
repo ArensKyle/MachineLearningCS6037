@@ -1,5 +1,10 @@
 // C++ program to implement Klee's algorithm
-#include<bits/stdc++.h>
+#include <stdio.h>
+#include <math.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
  
 // Returns sum of lengths covered by union of given
