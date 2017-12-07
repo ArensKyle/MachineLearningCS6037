@@ -1,5 +1,8 @@
 /* C program to implement Pigeonhole Sort */
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <math.h>
+#include <vector>
+
 using namespace std;
  
 /* Sorts the array using pigeonhole algorithm */

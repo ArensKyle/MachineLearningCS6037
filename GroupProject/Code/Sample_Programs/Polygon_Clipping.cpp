@@ -1,6 +1,8 @@
 // C++ program for implementing Sutherland–Hodgman
 // algorithm for polygon clipping
-#include<iostream>
+#include <stdio.h>
+#include <math.h>
+#include <iostream>
 using namespace std;
  
 const int MAX_POINTS = 20;

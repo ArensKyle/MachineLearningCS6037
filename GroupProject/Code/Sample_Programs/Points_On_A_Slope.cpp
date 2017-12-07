@@ -1,6 +1,11 @@
 // C++ program to find the points on a line of
 // slope M at distance L
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <math.h>
+#include <vector>
+#include <limits>
+#include <iostream>
+
 using namespace std;
  
 // structure to represent a co-ordinate

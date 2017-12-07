@@ -24,7 +24,7 @@ int findMax(int arr[], int n)
    return mi;
 }
  
-int pancakeSort(int *arr, int n)
+void pancakeSort(int *arr, int n)
 {
     
     for (int curr_size = n; curr_size > 1; --curr_size)
