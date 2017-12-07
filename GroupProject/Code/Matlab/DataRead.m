@@ -4,20 +4,25 @@ function [ machineCodes, codeRecords ] = DataRead( textFolder )
 
 folder = dir(textFolder);
 machineCodes = {'jmp', 'movl', 'pushl', 'jg', 'je', 'jle', 'xorl', 'cmpl', 'andl', 'subl', 'call', 'addl', 'leal'};
-
+codeRecords = [];
 for file = folder'
-    record = file.importdata(file.name);
-    codesRow = zeros(machineCodes.length());
-    for i = 1:record.data.length()
+    if (~contains(file.name, 'csv')) || (file.bytes == 0)
+        continue;
+    end
+    disp(file.name)
+    record = importdata(file.name);
+    codesRow = zeros(1, length(machineCodes));
+    for i = 1:length(record.data)
         curIndex = find(contains(machineCodes, record.textdata(i)));
         codesRow(curIndex) = record.data(i);
     end
-    if contains(file.name, 'sort')
+    if contains(file.name, 'Sort')
         type = 1;
     else
-        type = -1;
+        type = 2;
     end
-    codesRow = [codesRow, type];
+    disp(codesRow);
+    codesRow = [codesRow type];
     codeRecords = [codeRecords; codesRow];
 end
 
