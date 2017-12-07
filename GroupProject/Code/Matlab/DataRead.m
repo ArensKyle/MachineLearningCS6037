@@ -3,13 +3,12 @@ function [ machineCodes, codeRecords ] = DataRead( textFolder )
 %uses of each machine code found in an assembly version of a C++ function
 
 folder = dir(textFolder);
-machineCodes = {'jmp', 'movl', 'pushl', 'jg', 'je', 'jle', 'xorl', 'cmpl', 'andl', 'subl', 'call', 'addl', 'leal'};
+machineCodes = {'jmp', 'movl', 'pushl', 'jg', 'je', 'jle', 'xorl', 'cmpl', 'andl', 'subl', 'call', 'addl', 'leal', 'popl', 'testb'};
 codeRecords = [];
 for file = folder'
     if (~contains(file.name, 'csv')) || (file.bytes == 0)
         continue;
     end
-    disp(file.name)
     record = importdata(file.name);
     codesRow = zeros(1, length(machineCodes));
     for i = 1:length(record.data)
@@ -21,7 +20,6 @@ for file = folder'
     else
         type = 2;
     end
-    disp(codesRow);
     codesRow = [codesRow type];
     codeRecords = [codeRecords; codesRow];
 end
